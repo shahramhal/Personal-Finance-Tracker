@@ -18,6 +18,18 @@ def load_data():
     else:
         initialize()
         return load_data()
+
+def add_income(amount):
+    """Add income to the financial data."""
+    data = load_data()
+    data["income"].append(amount)
+
+
+def add_expense(amount):
+    """Add expense to the financial data."""
+    data = load_data()
+    data["expenses"].append(amount)
+
     
 def visualize_data():
     """Visualize financial data."""
