@@ -73,4 +73,13 @@ income_label.grid(row=0, column=0)
 
 income_entry = tk.Entry(income_frame)
 income_entry.grid(row=0, column=1)
+
+
+#creating expense widgets 
+expense_label = tk.Label(expense_frame, text="Enter Expense Amount:")
+expense_label.grid(row=0, column=0)
+
+expense_entry = tk.Entry(expense_frame)
+expense_entry.grid(row=0, column=1)
+
 root.mainloop()
