@@ -20,12 +20,12 @@ def setup_gui(root):
         except ValueError:
             messagebox.showerror("Error", "Invalid input for expense amount.")
     def handle_add_savings_goal():
-    goal = savings_goal_entry.get()
-    try:
-        amount = float(savings_amount_entry.get())
-        add_savings_goal(goal, amount)
-        messagebox.showinfo("Success", "Savings goal added successfully.")
-    except ValueError:
+        goal = savings_goal_entry.get()
+        try:
+            amount = float(savings_amount_entry.get())
+            add_savings_goal(goal, amount)
+            messagebox.showinfo("Success", "Savings goal added successfully.")
+        except ValueError:
             messagebox.showerror("Error", "Invalid input for savings amount.")
 
     # Creating frames 
@@ -58,7 +58,7 @@ def setup_gui(root):
     expense_entry = tk.Entry(expense_frame)
     expense_entry.grid(row=0, column=1)
 
-        expense_button = tk.Button(expense_frame, text="Add Expense", command=handle_add_expense)
+    expense_button = tk.Button(expense_frame, text="Add Expense", command=handle_add_expense)
     expense_button.grid(row=0, column=2)
 
     # Creating Savings Goal widgets
