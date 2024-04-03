@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
-from visualisation import add_income, add_expense
+from visualisation import add_income, add_expense, add_savings_goal
 
 
 def setup_gui(root):
