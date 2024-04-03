@@ -30,6 +30,11 @@ def add_expense(amount):
     data = load_data()
     data["expenses"].append(amount)
 
+def add_savings_goal(goal, amount):
+    """Add a savings goal to the financial data."""
+    data = load_data()
+    data["savings_goals"][goal] = amount
+    save_data(data)
     
 def visualize_data():
     """Visualize financial data."""
