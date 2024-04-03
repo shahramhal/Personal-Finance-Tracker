@@ -45,7 +45,7 @@ def visualize_data():
     plt.plot(x_values, expenses, label='Expenses', marker='o')
 
     # Add labels and title
-    plt.xlabel('Month')
+    plt.xlabel('Days')
     plt.ylabel('Amount ($)')
     plt.title('Income vs Expenses')
 

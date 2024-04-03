@@ -44,3 +44,19 @@ def setup_gui(root):
 
     expense_entry = tk.Entry(expense_frame)
     expense_entry.grid(row=0, column=1)
+
+    # Creating Savings Goal widgets
+    savings_goal_label = tk.Label(savings_frame, text="Enter Savings Goal:")
+    savings_goal_label.grid(row=0, column=0)
+
+    savings_goal_entry = tk.Entry(savings_frame)
+    savings_goal_entry.grid(row=0, column=1)
+
+    savings_amount_label = tk.Label(savings_frame, text="Enter Amount:")
+    savings_amount_label.grid(row=1, column=0)
+
+    savings_amount_entry = tk.Entry(savings_frame)
+    savings_amount_entry.grid(row=1, column=1)
+
+    savings_button = tk.Button(savings_frame, text="Add Savings Goal", command=handle_add_savings_goal)
+    savings_button.grid(row=2, column=1)
