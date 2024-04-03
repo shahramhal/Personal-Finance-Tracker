@@ -2,8 +2,25 @@ import tkinter as tk
 from tkinter import messagebox
 from visualisation import add_income, add_expense
 
-root = tk.Tk()
-root.title("Personal Finance Tracker")
+
+
+def setup_gui(root):
+    def handle_add_income():
+        try:
+            amount = float(income_entry.get())
+            add_income(amount)
+            messagebox.showinfo("Success", "Income added successfully.")
+        except ValueError:
+            messagebox.showerror("Error", "Invalid input for income amount.")
+
+    def handle_add_expense():
+        try:
+            amount = float(expense_entry.get())
+            add_expense(amount)
+            messagebox.showinfo("Success", "Expense added successfully.")
+        except ValueError:
+            messagebox.showerror("Error", "Invalid input for expense amount.")
+
 # Creating frames 
 income_frame = tk.Frame(root)
 income_frame.pack(pady=10)
