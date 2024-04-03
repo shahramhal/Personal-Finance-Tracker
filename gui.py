@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
-from visualisation import add_income, add_expense, add_savings_goal
+from visualisation import add_income, add_expense, add_savings_goal, display_summary
 
 
 def setup_gui(root):
@@ -37,6 +37,9 @@ def setup_gui(root):
 
     savings_frame = tk.Frame(root)
     savings_frame.pack(pady=10)
+
+    summary_frame = tk.Frame(root)
+    summary_frame.pack(pady=10)
 
     #Creating  income widgets 
     income_label = tk.Label(income_frame, text="Enter Income Amount:")
@@ -76,3 +79,7 @@ def setup_gui(root):
 
     savings_button = tk.Button(savings_frame, text="Add Savings Goal", command=handle_add_savings_goal)
     savings_button.grid(row=2, column=1)
+    # Creating Summary widgets 
+    summary_button = tk.Button(summary_frame, text="Display Summary", command=display_summary)
+    summary_button.grid(row=0, column=0, padx=10)
+
