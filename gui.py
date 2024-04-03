@@ -4,6 +4,7 @@ from visualisation import add_income, add_expense, add_savings_goal, display_sum
 
 
 def setup_gui(root):
+    #Error Handling part 
     def handle_add_income():
         try:
             amount = float(income_entry.get())
@@ -49,10 +50,8 @@ def setup_gui(root):
     income_entry.grid(row=0, column=1)
 
 
-    income_button = tk.Button(income_frame, text="Add Income", command=handle_add_income)
+    income_button = tk.Button(income_frame, text="Add Income", command=handle_add_income, width=14, height=2)
     income_button.grid(row=0, column=2)
-
-
 
     #creating expense widgets 
     expense_label = tk.Label(expense_frame, text="Enter Expense Amount:")

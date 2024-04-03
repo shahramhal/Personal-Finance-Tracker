@@ -1,6 +1,8 @@
 import json
 import os
 import matplotlib.pyplot as plt
+from tkinter import messagebox
+
 
 financial_data_file = "financial_data.json"
 
@@ -81,4 +83,4 @@ def display_summary():
     for goal, amount in savings_goals.items():
         summary += f"- {goal}: ${amount}\n"
     
-    print(summary)
+    messagebox.showinfo("Summary", summary)
