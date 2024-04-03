@@ -19,16 +19,23 @@ def load_data():
         initialize()
         return load_data()
 
+def save_data(data):
+    """Save financial data to file."""
+    with open(financial_data_file, 'w') as f:
+        json.dump(data, f)
+
 def add_income(amount):
     """Add income to the financial data."""
     data = load_data()
     data["income"].append(amount)
+    save_data(data)
 
 
 def add_expense(amount):
     """Add expense to the financial data."""
     data = load_data()
     data["expenses"].append(amount)
+    save_data(data)
 
 def add_savings_goal(goal, amount):
     """Add a savings goal to the financial data."""
