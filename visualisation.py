@@ -67,3 +67,18 @@ def visualize_data():
     # Show plot
     plt.grid(True)
     plt.show()
+
+def display_summary():
+    """Display a summary of income, expenses, and savings goals."""
+    data = load_data()
+    income_total = sum(data["income"])
+    expenses_total = sum(data["expenses"])
+    savings_goals = data["savings_goals"]
+
+    summary = f"Total Income: ${income_total}\n"
+    summary += f"Total Expenses: ${expenses_total}\n"
+    summary += "Savings Goals:\n"
+    for goal, amount in savings_goals.items():
+        summary += f"- {goal}: ${amount}\n"
+    
+    print(summary)
