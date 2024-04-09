@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
-from visualisation import add_income, add_expense, add_savings_goal, display_summary
+from visualisation import add_income, add_expense, add_savings_goal, display_summary,visualize_data
 
 
 def setup_gui(root):
@@ -28,7 +28,11 @@ def setup_gui(root):
             messagebox.showinfo("Success", "Savings goal added successfully.")
         except ValueError:
             messagebox.showerror("Error", "Invalid input for savings amount.")
-
+    def handle_visualize_data():
+        try:
+            visualize_data()
+        except Exception as e:
+            messagebox.showerror("Error", str(e))
     # Creating frames 
     income_frame = tk.Frame(root)
     income_frame.pack(pady=10)
@@ -50,7 +54,7 @@ def setup_gui(root):
     income_entry.grid(row=0, column=1)
 
 
-    income_button = tk.Button(income_frame, text="Add Income", command=handle_add_income, width=14, height=2)
+    income_button = tk.Button(income_frame, text="Add Income", command=handle_add_income, width=10, height=0)
     income_button.grid(row=0, column=2)
 
     #creating expense widgets 
@@ -82,3 +86,6 @@ def setup_gui(root):
     summary_button = tk.Button(summary_frame, text="Display Summary", command=display_summary)
     summary_button.grid(row=0, column=0, padx=10)
 
+    # Visualize Data Button
+    visualize_button = tk.Button(summary_frame, text="Visualize Data", command=handle_visualize_data)
+    visualize_button.grid(row=0, column=1, padx=10)
