@@ -2,21 +2,27 @@ import tkinter as tk
 from tkinter import messagebox
 from visualisation import add_income, add_expense, add_savings_goal, display_summary,visualize_data
 
+# Define categories for income and expenses
+income_categories = ["Salary", "Investment", "Other"]
+expense_categories = ["House", "Groceries", "Entertainment", "Transport", "Shopping", "services", "other "]
+
 
 def setup_gui(root):
-    #Error Handling part 
+    # Error Handling part
     def handle_add_income():
         try:
+            category = income_category_var.get()
             amount = float(income_entry.get())
-            add_income(amount)
+            add_income(category, amount)
             messagebox.showinfo("Success", "Income added successfully.")
         except ValueError:
             messagebox.showerror("Error", "Invalid input for income amount.")
 
     def handle_add_expense():
         try:
+            category = expense_category_var.get()
             amount = float(expense_entry.get())
-            add_expense(amount)
+            add_expense(category, amount)
             messagebox.showinfo("Success", "Expense added successfully.")
         except ValueError:
             messagebox.showerror("Error", "Invalid input for expense amount.")
@@ -32,8 +38,9 @@ def setup_gui(root):
         try:
             visualize_data()
         except Exception as e:
-            messagebox.showerror("Error", str(e))
-    # Creating frames 
+            messagebox.showerror("Error", str(e)) 
+
+    # Creating frames
     income_frame = tk.Frame(root)
     income_frame.pack(pady=10)
 
@@ -43,31 +50,53 @@ def setup_gui(root):
     savings_frame = tk.Frame(root)
     savings_frame.pack(pady=10)
 
+
     summary_frame = tk.Frame(root)
     summary_frame.pack(pady=10)
 
-    #Creating  income widgets 
+    # Creating income widgets
     income_label = tk.Label(income_frame, text="Enter Income Amount:")
     income_label.grid(row=0, column=0)
 
     income_entry = tk.Entry(income_frame)
     income_entry.grid(row=0, column=1)
 
+    income_category_label = tk.Label(income_frame, text="Select Category:")
+    income_category_label.grid(row=1, column=0)
 
-    income_button = tk.Button(income_frame, text="Add Income", command=handle_add_income, width=10, height=0)
-    income_button.grid(row=0, column=2)
+    # Create dropdown menu for income category
+    income_category_var = tk.StringVar()
+    income_category_var.set(income_categories[0])  # Default value
+    income_category_menu = tk.OptionMenu(income_frame, income_category_var, *income_categories)
+    income_category_menu.grid(row=1, column=1)
 
-    #creating expense widgets 
+    income_button = tk.Button(income_frame, text="Add Income", command=handle_add_income)
+    income_button.grid(row=2, columnspan=2, pady=5)
+
+    # Creating expense widgets
     expense_label = tk.Label(expense_frame, text="Enter Expense Amount:")
     expense_label.grid(row=0, column=0)
 
     expense_entry = tk.Entry(expense_frame)
     expense_entry.grid(row=0, column=1)
 
-    expense_button = tk.Button(expense_frame, text="Add Expense", command=handle_add_expense)
-    expense_button.grid(row=0, column=2)
+    expense_category_label = tk.Label(expense_frame, text="Select Category:")
+    expense_category_label.grid(row=1, column=0)
 
-    # Creating Savings Goal widgets
+    # Create dropdown menu for expense category
+    expense_category_var = tk.StringVar()
+    expense_category_var.set(expense_categories[0])  # Default value
+    expense_category_menu = tk.OptionMenu(expense_frame, expense_category_var, *expense_categories)
+    expense_category_menu.grid(row=1, column=1)
+
+    expense_button = tk.Button(expense_frame, text="Add Expense", command=handle_add_expense)
+    expense_button.grid(row=2, columnspan=2, pady=5)
+
+    # Display Summary Button
+    summary_button = tk.Button(summary_frame, text="Display Summary", command=display_summary)
+    summary_button.pack()
+
+     # Creating Savings Goal widgets
     savings_goal_label = tk.Label(savings_frame, text="Enter Savings Goal:")
     savings_goal_label.grid(row=0, column=0)
 
@@ -82,10 +111,7 @@ def setup_gui(root):
 
     savings_button = tk.Button(savings_frame, text="Add Savings Goal", command=handle_add_savings_goal)
     savings_button.grid(row=2, column=1)
-    # Creating Summary widgets 
-    summary_button = tk.Button(summary_frame, text="Display Summary", command=display_summary)
-    summary_button.grid(row=0, column=0, padx=10)
 
     # Visualize Data Button
-    visualize_button = tk.Button(summary_frame, text="Visualize Data", command=handle_visualize_data)
-    visualize_button.grid(row=0, column=1, padx=10)
+    visualize_button = tk.Button(summary_frame, text="Visualize Data", command=visualize_data)
+    visualize_button.pack()
