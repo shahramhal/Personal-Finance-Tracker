@@ -56,18 +56,24 @@ def add_savings_goal(goal, amount):
     save_data(data)
     
 def visualize_data():
-    """Visualize financial data as a pie chart."""
-    income_total = sum(sum(income) for income in data["income"].values())
-    expenses_total = sum(sum(expenses) for expenses in data["expenses"].values())
-     # Pie chart
-    labels = ['Income', 'Expenses']
-    sizes = [income_total, expenses_total]
-    colors = ['lightgreen', 'lightcoral']
-    explode = (0.1, 0)  # explode 1st slice
-    plt.figure(figsize=(8, 8))
-    plt.pie(sizes, explode=explode, labels=labels, colors=colors, autopct='%1.1f%%', shadow=True, startangle=140)
-    plt.axis('equal')
+    """Visualize financial data as pie charts for income and expenses by categories."""
+    data = load_data()
+    income_data = data["income"]
+    expense_data = data["expenses"]
 
+    # Pie chart for Income by Category
+    plt.figure(figsize=(10, 5))
+    plt.subplot(1, 2, 1)
+    plt.pie([sum(amounts) for amounts in income_data.values()], labels=income_data.keys(), autopct='%1.1f%%', startangle=140)
+    plt.title('Income by Category (£)')
+
+    # Pie chart for Expenses by Category
+    plt.subplot(1, 2, 2)
+    plt.pie([sum(amounts) for amounts in expense_data.values()], labels=expense_data.keys(), autopct='%1.1f%%', startangle=140)
+    plt.title('Expenses by Category (£)')
+
+    plt.tight_layout()
+    plt.show()
 def display_summary():
     """Display a summary of income, expenses, savings goals, and balance."""
     data = load_data()
