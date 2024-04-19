@@ -26,6 +26,7 @@ def setup_gui(root):
             messagebox.showinfo("Success", "Expense added successfully.")
         except ValueError:
             messagebox.showerror("Error", "Invalid input for expense amount.")
+
     def handle_add_savings_goal():
         goal = savings_goal_entry.get()
         try:
@@ -34,12 +35,13 @@ def setup_gui(root):
             messagebox.showinfo("Success", "Savings goal added successfully.")
         except ValueError:
             messagebox.showerror("Error", "Invalid input for savings amount.")
+
     def handle_visualize_data():
         try:
             visualize_data()
         except Exception as e:
             messagebox.showerror("Error", str(e))
-    
+
     def handle_display_summary():
         try:
             display_summary()
