@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
-from visualisation import add_income, add_expense, add_savings_goal, display_summary,visualize_data
+from visualisation import add_income, add_expense, add_savings_goal, display_summary, visualize_data
 
 # Define categories for income and expenses
 income_categories = ["Salary", "Investment", "Other"]
@@ -26,6 +26,7 @@ def setup_gui(root):
             messagebox.showinfo("Success", "Expense added successfully.")
         except ValueError:
             messagebox.showerror("Error", "Invalid input for expense amount.")
+
     def handle_add_savings_goal():
         goal = savings_goal_entry.get()
         try:
@@ -34,13 +35,22 @@ def setup_gui(root):
             messagebox.showinfo("Success", "Savings goal added successfully.")
         except ValueError:
             messagebox.showerror("Error", "Invalid input for savings amount.")
+
     def handle_visualize_data():
         try:
             visualize_data()
         except Exception as e:
-            messagebox.showerror("Error", str(e)) 
+            messagebox.showerror("Error", str(e))
+
+    def handle_display_summary():
+        try:
+            display_summary()
+        except Exception as e:
+            messagebox.showerror("Error", str(e))
 
     # Creating frames
+    root.title("Personal Finance Tracker")
+
     income_frame = tk.Frame(root)
     income_frame.pack(pady=10)
 
@@ -49,7 +59,6 @@ def setup_gui(root):
 
     savings_frame = tk.Frame(root)
     savings_frame.pack(pady=10)
-
 
     summary_frame = tk.Frame(root)
     summary_frame.pack(pady=10)
@@ -64,9 +73,8 @@ def setup_gui(root):
     income_category_label = tk.Label(income_frame, text="Select Category:")
     income_category_label.grid(row=1, column=0)
 
-    # Create dropdown menu for income category
     income_category_var = tk.StringVar()
-    income_category_var.set(income_categories[0])  # Default value
+    income_category_var.set(income_categories[0])
     income_category_menu = tk.OptionMenu(income_frame, income_category_var, *income_categories)
     income_category_menu.grid(row=1, column=1)
 
@@ -83,9 +91,8 @@ def setup_gui(root):
     expense_category_label = tk.Label(expense_frame, text="Select Category:")
     expense_category_label.grid(row=1, column=0)
 
-    # Create dropdown menu for expense category
     expense_category_var = tk.StringVar()
-    expense_category_var.set(expense_categories[0])  # Default value
+    expense_category_var.set(expense_categories[0])
     expense_category_menu = tk.OptionMenu(expense_frame, expense_category_var, *expense_categories)
     expense_category_menu.grid(row=1, column=1)
 
@@ -93,10 +100,10 @@ def setup_gui(root):
     expense_button.grid(row=2, columnspan=2, pady=5)
 
     # Display Summary Button
-    summary_button = tk.Button(summary_frame, text="Display Summary", command=display_summary)
+    summary_button = tk.Button(summary_frame, text="Display Summary", command=handle_display_summary)
     summary_button.pack()
 
-     # Creating Savings Goal widgets
+    # Creating Savings Goal widgets
     savings_goal_label = tk.Label(savings_frame, text="Enter Savings Goal:")
     savings_goal_label.grid(row=0, column=0)
 
@@ -113,5 +120,7 @@ def setup_gui(root):
     savings_button.grid(row=2, column=1)
 
     # Visualize Data Button
-    visualize_button = tk.Button(summary_frame, text="Visualize Data", command=visualize_data)
+    visualize_button = tk.Button(summary_frame, text="Visualize Data", command=handle_visualize_data)
     visualize_button.pack()
+
+    root.mainloop()
