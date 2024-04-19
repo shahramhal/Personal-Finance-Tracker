@@ -14,12 +14,10 @@ Usage:
 2. Navigate to the project directory: cd personal-finance-tracker
 3. Run the program: python main.py
 
-Requirements:
-- Python 3
-- matplotlib
+
 
 Contributing:
 Contributions to the project are welcome. Feel free to submit pull requests or report issues on the GitHub repository.
 
 Author:
-Your Name
+Shahram Halimzoda 
