@@ -30,7 +30,11 @@ Copy code
 python main.py
 
 
-
+Requirements
+Python 3
+Matplotlib
+Contributing
+Contributions to the project are highly appreciated! Whether you want to add new features, fix bugs, or improve documentation, your contributions are welcome. Feel free to submit pull requests or report issues on the GitHub repository.
 
 Author
 This project was created by [Your Name]. If you have any questions or suggestions, please feel free to reach out.
