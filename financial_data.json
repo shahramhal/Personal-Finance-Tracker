@@ -1,1 +1,1 @@
-{"income": [], "expenses": [], "savings_goals": {}}
+{"income": {"Salary": [10.0], "Investment": [1.0]}, "expenses": {"House": [10.0], "Groceries": [], "Entertainment": [20.0], "Transport": [], "Shopping": [], "services": [20.0], "other": []}, "savings_goals": {}}

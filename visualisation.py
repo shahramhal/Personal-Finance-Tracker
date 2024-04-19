@@ -56,30 +56,22 @@ def add_savings_goal(goal, amount):
     save_data(data)
     
 def visualize_data():
-    """Visualize financial data."""
+    """Visualize financial data as a pie chart."""
     data = load_data()
-    income = data["income"]
-    expenses = data["expenses"]
-    
-    # Generate x values (assuming equal intervals for simplicity)
-    x_values = list(range(1, len(income) + 1))
+    income_total = sum(sum(income) for income in data["income"].values())
+    expenses_total = sum(sum(expenses) for expenses in data["expenses"].values())
 
-    # Plot income and expenses
-    plt.plot(x_values, income, label='Income', marker='o')
-    plt.plot(x_values, expenses, label='Expenses', marker='o')
+    # Pie chart
+    labels = ['Income', 'Expenses']
+    sizes = [income_total, expenses_total]
+    colors = ['lightgreen', 'lightcoral']
+    explode = (0.1, 0)  # explode 1st slice
 
-    # Add labels and title
-    plt.xlabel('Days')
-    plt.ylabel('Amount ($)')
+    plt.figure(figsize=(8, 8))
+    plt.pie(sizes, explode=explode, labels=labels, colors=colors, autopct='%1.1f%%', shadow=True, startangle=140)
+    plt.axis('equal')
     plt.title('Income vs Expenses')
-
-    # Add legend
-    plt.legend()
-
-    # Show plot
-    plt.grid(True)
     plt.show()
-
 def display_summary():
     """Display a summary of income, expenses, and savings goals."""
     data = load_data()
