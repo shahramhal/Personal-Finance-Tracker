@@ -4,8 +4,7 @@ from visualisation import add_income, add_expense, add_savings_goal, display_sum
 
 # Define categories for income and expenses
 income_categories = ["Salary", "Investment", "Other"]
-expense_categories = ["House", "Groceries", "Entertainment", "Transport", "Shopping", "services", "other "]
-
+expense_categories = ["House", "Groceries", "Entertainment", "Transport", "Shopping", "Services", "Other"]
 
 def setup_gui(root):
     # Error Handling part

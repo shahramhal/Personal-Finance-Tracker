@@ -3,32 +3,31 @@ import os
 import matplotlib.pyplot as plt
 from tkinter import messagebox
 
-
 financial_data_file = "financial_data.json"
 
 def initialize():
-    """Initialize the program."""
+    """Initialize the program by creating a JSON file with default structure if it doesn't exist."""
     if not os.path.exists(financial_data_file):
         with open(financial_data_file, 'w') as f:
             json.dump({
-                "income": {"Salary": [], "Investment": []},
-                "expenses": {"House": [], "Groceries": [],
+                "income": {"Salary": [], "Investment": []},  # Income categories with empty lists
+                "expenses": {"House": [], "Groceries": [],  # Expense categories with empty lists
                              "Entertainment": [], "Transport": [], 
                              "Shopping": [], "services": [], "other": []},
-                "savings_goals": {}
+                "savings_goals": {}  # Savings goals initialized as empty dictionary
             }, f)
 
 def load_data():
-    """Load financial data from file."""
+    """Load financial data from the JSON file."""
     if os.path.exists(financial_data_file):
         with open(financial_data_file, 'r') as f:
             return json.load(f)
     else:
-        initialize()
+        initialize()  # If file doesn't exist, initialize it
         return load_data()
 
 def save_data(data):
-    """Save financial data to file."""
+    """Save financial data to the JSON file."""
     with open(financial_data_file, 'w') as f:
         json.dump(data, f)
 
@@ -36,16 +35,15 @@ def add_income(category, amount):
     """Add income to the financial data."""
     data = load_data()
     if category not in data["income"]:
-        data["income"][category] = []
+        data["income"][category] = []  # If category doesn't exist, create it
     data["income"][category].append(amount)
     save_data(data)
-
 
 def add_expense(category, amount):
     """Add expense to the financial data."""
     data = load_data()
     if category not in data["expenses"]:
-        data["expenses"][category] = []
+        data["expenses"][category] = []  # If category doesn't exist, create it
     data["expenses"][category].append(amount)
     save_data(data)
 
@@ -74,6 +72,7 @@ def visualize_data():
 
     plt.tight_layout()
     plt.show()
+
 def display_summary():
     """Display a summary of income, expenses, savings goals, and balance."""
     data = load_data()
