@@ -15,7 +15,7 @@ This program is a personal finance tracker that helps users manage their finance
 ## Installation:
 1. Clone the repository: git clone 
  ```
-https://github.com//shahramhal/programming_project.git
+https://github.com//shahramhal/Personal-Finance-Tracker.git
 ```
 2. Navigate to the project directory:
 ```
