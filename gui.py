@@ -1,15 +1,15 @@
 import tkinter as tk
 from tkinter import messagebox
-from visualisation import add_income, add_expense, add_savings_goal, display_summary, visualize_data
+from visualisation import add_income, add_expense, add_savings_goal, display_summary, visualize_data, delete_last_income, delete_last_expense, delete_last_savings_goal
 
 # Define categories for income and expenses
 income_categories = ["Salary", "Investment", "Other"]
-expense_categories = ["House", "Groceries", "Entertainment", "Transport", "Shopping", "services", "other "]
+expense_categories = ["House", "Groceries", "Entertainment", "Transport", "Shopping", "Services", "Other"]
 
 
 def setup_gui(root):
     # Error Handling part
-    def handle_add_income():
+    def error_add_income(): #Error Handling for income 
         try:
             category = income_category_var.get()
             amount = float(income_entry.get())
@@ -18,7 +18,7 @@ def setup_gui(root):
         except ValueError:
             messagebox.showerror("Error", "Invalid input for income amount.")
 
-    def handle_add_expense():
+    def error_add_expense():#Error Handling for expense button 
         try:
             category = expense_category_var.get()
             amount = float(expense_entry.get())
@@ -27,7 +27,7 @@ def setup_gui(root):
         except ValueError:
             messagebox.showerror("Error", "Invalid input for expense amount.")
 
-    def handle_add_savings_goal():
+    def error_add_savings_goal():#Error Handling for saving goal button 
         goal = savings_goal_entry.get()
         try:
             amount = float(savings_amount_entry.get())
@@ -36,13 +36,13 @@ def setup_gui(root):
         except ValueError:
             messagebox.showerror("Error", "Invalid input for savings amount.")
 
-    def handle_visualize_data():
+    def error_visualize_data():#Error Handling for income 
         try:
             visualize_data()
         except Exception as e:
             messagebox.showerror("Error", str(e))
 
-    def handle_display_summary():
+    def error_display_summary():#Error Handling for summary display button  
         try:
             display_summary()
         except Exception as e:
@@ -78,8 +78,12 @@ def setup_gui(root):
     income_category_menu = tk.OptionMenu(income_frame, income_category_var, *income_categories)
     income_category_menu.grid(row=1, column=1)
 
-    income_button = tk.Button(income_frame, text="Add Income", command=handle_add_income)
+    income_button = tk.Button(income_frame, text="Add Income", command=error_add_income)
     income_button.grid(row=2, columnspan=2, pady=5)
+
+    # Delete Last Income Button
+    delete_income_button = tk.Button(income_frame, text="Delete last action", command= delete_last_income)
+    delete_income_button.grid(row=3, columnspan=2, pady=5)
 
     # Creating expense widgets
     expense_label = tk.Label(expense_frame, text="Enter Expense Amount:")
@@ -96,11 +100,15 @@ def setup_gui(root):
     expense_category_menu = tk.OptionMenu(expense_frame, expense_category_var, *expense_categories)
     expense_category_menu.grid(row=1, column=1)
 
-    expense_button = tk.Button(expense_frame, text="Add Expense", command=handle_add_expense)
+    expense_button = tk.Button(expense_frame, text="Add Expense", command=error_add_expense)
     expense_button.grid(row=2, columnspan=2, pady=5)
 
+    # Delete Last Expense Button
+    delete_expense_button = tk.Button(expense_frame, text="Delete last action", command= delete_last_expense)
+    delete_expense_button.grid(row=3, columnspan=2, pady=5)
+
     # Display Summary Button
-    summary_button = tk.Button(summary_frame, text="Display Summary", command=handle_display_summary)
+    summary_button = tk.Button(summary_frame, text="Display Summary", command=error_display_summary)
     summary_button.pack()
 
     # Creating Savings Goal widgets
@@ -116,11 +124,15 @@ def setup_gui(root):
     savings_amount_entry = tk.Entry(savings_frame)
     savings_amount_entry.grid(row=1, column=1)
 
-    savings_button = tk.Button(savings_frame, text="Add Savings Goal", command=handle_add_savings_goal)
+    savings_button = tk.Button(savings_frame, text="Add Savings Goal", command=error_add_savings_goal)
     savings_button.grid(row=2, column=1)
 
+    # Delete Last Savings Goal Button
+    delete_savings_button = tk.Button(savings_frame, text="Delete last action", command=delete_last_savings_goal)
+    delete_savings_button.grid(row=3, columnspan=2, pady=5)
+
     # Visualize Data Button
-    visualize_button = tk.Button(summary_frame, text="Visualize Data", command=handle_visualize_data)
+    visualize_button = tk.Button(summary_frame, text="Visualize Data", command=error_visualize_data)
     visualize_button.pack()
 
     root.mainloop()

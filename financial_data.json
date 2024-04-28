@@ -1,1 +1,1 @@
-{"income": {"Salary": [10.0, 100.0, 1.0], "Investment": [1.0], "Other": [4.0]}, "expenses": {"House": [10.0], "Groceries": [40.0], "Entertainment": [20.0], "Transport": [2.0], "Shopping": [4.0], "services": [20.0],  "other ": [2.0, 2.0]}, "savings_goals": {"uni": 17000.0}}
+{"income": {"Salary": [10.0], "Investment": [], "Other": []}, "expenses": {"House": [], "Groceries": [], "Entertainment": [20.0], "Transport": [2.0], "Shopping": [4.0], "services": [20.0], "other ": [2.0, 2.0]}, "savings_goals": {"uni": 17000.0}}

@@ -3,7 +3,6 @@ import os
 import matplotlib.pyplot as plt
 from tkinter import messagebox
 
-
 financial_data_file = "financial_data.json"
 
 def initialize():
@@ -14,7 +13,7 @@ def initialize():
                 "income": {"Salary": [], "Investment": []},
                 "expenses": {"House": [], "Groceries": [],
                              "Entertainment": [], "Transport": [], 
-                             "Shopping": [], "services": [], "other": []},
+                             "Shopping": [], "Services": [], "Other": []},
                 "savings_goals": {}
             }, f)
 
@@ -40,7 +39,6 @@ def add_income(category, amount):
     data["income"][category].append(amount)
     save_data(data)
 
-
 def add_expense(category, amount):
     """Add expense to the financial data."""
     data = load_data()
@@ -54,7 +52,41 @@ def add_savings_goal(goal, amount):
     data = load_data()
     data["savings_goals"][goal] = amount
     save_data(data)
-    
+
+def delete_last_income():
+    """Delete the last added income entry."""
+    data = load_data()
+    for category, amounts in data["income"].items():
+        if amounts:
+            amount = data["income"][category].pop()
+            save_data(data)
+            messagebox.showinfo("Success", f"Last income entry ({amount} in {category}) deleted.")
+            return
+    messagebox.showinfo("Info", "No income entries to delete.")
+
+def delete_last_expense():
+    """Delete the last added expense entry."""
+    data = load_data()
+    for category, amounts in data["expenses"].items():
+        if amounts:
+            amount = data["expenses"][category].pop()
+            save_data(data)
+            messagebox.showinfo("Success", f"Last expense entry ({amount} in {category}) deleted.")
+            return
+    messagebox.showinfo("Info", "No expense entries to delete.")
+
+def delete_last_savings_goal():
+    """Delete the last added savings goal entry."""
+    data = load_data()
+    if data["savings_goals"]:
+        goals = list(data["savings_goals"].keys())
+        goal = goals[-1]
+        amount = data["savings_goals"].pop(goal)
+        save_data(data)
+        messagebox.showinfo("Success", f"Last savings goal entry ({amount} for {goal}) deleted.")
+    else:
+        messagebox.showinfo("Info", "No savings goals to delete.")
+
 def visualize_data():
     """Visualize financial data as pie charts for income and expenses by categories."""
     data = load_data()
@@ -74,6 +106,7 @@ def visualize_data():
 
     plt.tight_layout()
     plt.show()
+
 def display_summary():
     """Display a summary of income, expenses, savings goals, and balance."""
     data = load_data()
