@@ -6,6 +6,10 @@
 ## Discription 
 This program is a personal finance tracker that helps users manage their finances, track expenses, and set budget goals. Users can input their income, expenses, and savings goals, and the program will provide insights into their spending habits, display budget summaries, and notify users if they exceed their budget limits. The program utilizes data visualization techniques to represent financial data graphically for better understanding.
 
+## Libraries :
+- matplotlib.pyplot
+- os
+- json
 ## Features:
 - Tracks income, expenses, and savings goals.
 - Provides insights into spending habits and budget summaries.
