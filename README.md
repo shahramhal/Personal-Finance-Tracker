@@ -10,6 +10,7 @@ This program is a personal finance tracker that helps users manage their finance
 - matplotlib.pyplot
 - os
 - json
+- tkinter 
 ## Features:
 - Tracks income, expenses, and savings goals.
 - Provides insights into spending habits and budget summaries.
